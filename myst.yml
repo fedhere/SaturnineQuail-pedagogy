@@ -1,0 +1,15 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 14ae5460-2f96-4d2d-8343-2577acc886fc
+  # title:
+  # description:
+  # keywords: []
+  # authors: []
+  github: https://github.com/FoxFortino/SaturnineQuail-pedagogy
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
