@@ -1,7 +1,7 @@
 [project]
 name = "saturninequail-pedagogy"
 version = "0.1.0"
-description = "Add your description here"
+description = "The pedagogical component of Willow Fox Fortino's PhD Dissertation."
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
