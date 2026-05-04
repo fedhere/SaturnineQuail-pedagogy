@@ -3,13 +3,13 @@
 ## Questions to Ponder:
 
 - What does it mean to 'explore' data?
-- What is Pearson's correlation coefficient?
+- What is correlation? 
 - What is probability?
 - Important `pandas` methods for initial data inspection (`shape`, `head`, `tail`, `columns`, `info`, `describe`)
 
 ## Introduction
 
-Effective decision-making requires data. Before any sophisticated modeling or inference can begin you must thoroughly understand your data. Thus, before we begin our project in earnest, we must undertake an adventure into our dataset! We must examine the variables, understand their distributions and relationships and visualize the data. This is **data exploration**.
+Effective decision-making requires data. Before any sophisticated modeling or inference can begin, you must thoroughly understand your data. Thus, before we begin our project in earnest, we must undertake an adventure into our dataset! We must examine the variables, understand their distributions and relationships and visualize the data. This is **data exploration**.
 
 Viewing raw data directly, such as examining the raw content of a `.csv` file, can be illuminating and should be in one of your very first steps of data exploration. The data may be corrupted or having missing segments and sometimes this can be easy to see in raw form. However, viewing raw data can hardly be more informative than a cursory glance. We must *inspect*, *investigate*, *explore* the data; we must become friends with the data!
 
