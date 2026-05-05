@@ -44,11 +44,11 @@ Where a Poisson distribution was defined by one number, the mean $\lambda$, the 
 
 There are a few things to note about the Gaussian distribution and our particular choice of example. First, our example has a limited support. That is, $x$ can only take on values between $0\%$ and $100\%$. Gaussian dsitributions are defined on an infinite support (*i.e.,* $x$ can be any value between negative infinity and infinity; the mathematical way to say that is $x \in \mathbb{R})$, so technically what we have here is called a **truncated normal distribution.** For the purposes of this example though, the differences aren't relevant (especially because with a small $\sigma$ the probability of getting values <0 or >100 is very very low in our example, <0.3%). 
 
-Also note how we asked different types of questions in the leaky faucet example and the test example. In the former we asked "What is the probability of observing *exactly* four drops in one minute?" And in the latter we asked "What is the probability that a student scored *between* an $80\%$ and a $90\%$?" For a discrete distribution its probabiliy *mass* function (PMF) $P(k)$ gives the direct probability of observing exactly $k$. 
+Also note how we asked different types of questions in the leaky faucet example and the test example. In the former, we asked, "What is the probability of observing *exactly* four drops in one minute?" And in the latter we asked "What is the probability that a student scored *between* an $80\%$ and a $90\%$?" For a discrete distribution, its probability *mass* function (PMF) $P(k)$ gives the direct probability of observing exactly $k$. 
 
-But if the support is continuous, as in the case of a Gaussian distribution, there are inifinitely many values the function could take in any given interval of that support. So we can only define the probability $P(X\pm dx)$ of a continuous distribution as the probability the variable will take a value within a range $dx$, which can be as small or large as we want. 
+But if the support is continuous, as in the case of a Gaussian distribution, there are infinitely many values the function could take in any given interval of that support. So we can only define the probability $P(X\pm dx)$ of a continuous distribution as the probability the variable will take a value within a range $dx$, which can be as small or large as we want. We can, for example, (and this will be important in the next lecture), as $P(X \geq 0.05)$ or $P(X \leq 0.05)$.
 
-It's also important to discuss special cases of the Guassian/Normal distribution where $\mu=0$ and $\sigma=1$. We give this distribution a specific name: the **Standard** Normal Distribution.
+It's also important to discuss special cases of the Guassian/Normal distribution where $\mu=0$ and $\sigma=1$. We give this distribution a specific name: the **Standard** Normal Distribution. In this case, $P(X \geq -1)  \cup P(X \leq 1) == 68.2$\% and $P(X \geq -2)  \cup P(X \leq2 ) = 95.4$\%. In the next section, we will see why (and in the next lecture we will leverage this fact to disprove hypotheses).
 
 ## Moments of a Distribution
 
@@ -56,7 +56,7 @@ Let's define something called a **moment** of some function, $f(x)$.
 
 $$\mu_n = \int^{\infty}_{-\infty} (x-c)^n\ f(x)\ dx$$
 
-$f(x)$ is the function were taking a moment of and $n$ is the ordinality of the moment (*i.e.,* first moment, second moment, third moment, etc.). In this instance, we would say " $\mu_n$ is the $n$-th moment of $f(x)$ *with respect to* $c$." When $c=0$ the moment is said to be a **raw moment.** The first raw moment of distribution is the mean!
+$f(x)$ is the function we are taking a moment of and $n$ is the ordinality of the moment (*i.e.,* first moment, second moment, third moment, etc.). In this instance, we would say " $\mu_n$ is the $n$-th moment of $f(x)$ *with respect to* $c$." When $c=0$ the moment is said to be a **raw moment.** The first raw moment of distribution is the mean!
 
 $$\mu \equiv \mu_1 = \int^{\infty}_{-\infty} x\ f(x)\ dx$$
 
