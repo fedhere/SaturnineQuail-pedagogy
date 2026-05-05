@@ -80,8 +80,8 @@ Quantiles divide a distribution into equal-sized intervals. For the Gaussian dis
 
 | Standard deviations ($n$) | Proportion within $\mu \pm n\sigma$ |
 |---------------------------|--------------------------------------|
-| 1 | 68.2% |
-| 2 | 95.4% |
+| 1 | 68% |
+| 2 | 95% |
 | 3 | 99.7% |
 | 4 | 99.993% |
 | 5 | 99.99994% |
