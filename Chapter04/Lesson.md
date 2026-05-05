@@ -45,7 +45,7 @@ This choice of directionality has important consequences for the test, as we wil
 
 ### Step 3: Set a Confidence Threshold
 
-The scientist must determine how much evidence they require in order to reject the null hypothesis. We set this threshold of evidence by stating a confidence level, $\alpha$, which represents the probability of rejecting $H_0$ *when it's actually true.* This is known as a Type I error. Colloquially you could say "There is an $\alpha$\%  probability that the evidence indicates we should reject the null hypothesis when it's actually true." <!--The smallest value for $\alpha$ one should choose is $5\%$.-->
+The scientist must determine how much evidence they require in order to reject the null hypothesis. We set this threshold of evidence by stating a confidence level, $\alpha$, which represents the probability of rejecting $H_0$ *when it's actually true.* This is known as a Type I error. Colloquially you could say "There is an $\alpha$\%  probability that the evidence indicates we should reject the null hypothesis when it's actually true." <!--The smallest value for $\alpha$ one should choose is $5$\%.-->
 
 Once more: we must determine for ourselves how much evidence we need in order to reject the null hypothesis. No one else will do it for us. The way we do this is by selecting a confidence threshold *before* we perform the rest of the NHRT algorithm. This threshold represents the probability that the data indicates to us (through the use of the forthcoming statistical test) that we should reject the null hypothesis even though, in reality, it's true.
 
@@ -60,9 +60,9 @@ A **pivotal quantity** (or test statistic) is a function of the data whose proba
 
 $$Z = \frac{\overline{X} - \mu_0}{\sigma_0 / \sqrt{n}}$$
 
-where $\overline{X}$ is the sample mean, $n$ is the sample size and $\mu_0$ and $\sigma_0$ are the _population_ mean and standard deviation under $H_0$ (*i.e.,* $\mu_0=34\text{ min}$ $\sigma_0=2.4\text{ min}$. By the Central Limit Theorem, we know that when $n$ is sufficiently large, the sampling distribution of $\overline{X}$ is approximately normal, and consequently $Z$ follows a standard normal distribution with mean 0 and standard deviation 1.
+where $\overline{X}$ is the sample mean, $n$ is the sample size and $\mu_0$ and $\sigma_0$ are the _population_ mean and standard deviation under $H_0$ (*i.e.,* $\mu_0=34\text{ min}$ $\sigma_0=2.4\text{ min}$. By the Central Limit Theorem, we know that when $n$ is sufficiently large, the sampling distribution of $\overline{X}$ is approximately normal, and consequently $Z$ follows a standard normal distribution with mean 0 and standard deviation 1, or in mathematical notation, $Z \sim P_\mathcal{N}$.
 
-But is $Z$ is a number extracted from a standard normal distribution, from the previous lecture, we _know_ what the probability of getting a number _as large_ or _as small_ as $Z$ is because we know the PMF of $\math{N}$. 
+But is $Z$ is a number extracted from a standard normal distribution, from the previous lecture, we _know_ what the probability of getting a number _as large_ or _as small_ as $Z$ is because we know the PMF $P_\mathcal{N}$. 
 
 For example, if $Z$, extracted from a Gaussian distribution with mean $\mu=0$ and standard deviation $\sigma=1$, were $Z>1$, we would know that the probability of getting $Z>1$ is $P(Z>1) = (100-68.2)/2 = 15.9$ (please review last lecture's material if this is not clear)!
 
@@ -77,17 +77,17 @@ The Z-statistic tells us that the sample mean of Route $B$ trip durations lies 1
 
 ### Step 6: Test the Data Against Alternative Outcomes
 
-The **p-value** is the probability, under the null hypothesis, of obtaining a test statistic at least as extreme as the one observed. Crucially, the p-value is *not* the probability that $H_0$ is true.
+The **p-value** is the probability, under the null hypothesis, of obtaining a test statistic at least as extreme as the one observed: $P(Z>1.94) if $H_0$ is true, or equivalently, if $Z \sim P_\mathcal{N}$. Crucially, the p-value is *not* the probability that $H_0$ is true.
 
 $$p = 2 \Phi(| Z |) = 0.052$$
 
-I've introduced a new symbol here, $\Phi$, the **Cumulative Distribution Function (CDF)** of the standard normal distribution. I'll come back to what the CDF is and how we calculated the $p\text{-value}$, but let's first accept this value as correct and figure out what it means for null hypothesis.
+I've introduced a new symbol here, $\Phi$, the **Cumulative Distribution Function (CDF)** of the standard normal distribution. I'll come back to what the CDF is and how we calculated the $p\text{-value}$, but let's first accept this value as correct and figure out what it means for _null_ hypothesis.
 
 Let's remind ourselves what our null and alternative hypotheses were. $H_0$: "The sample of Route $B$ trip durations comes from a population with $\mu_0 = 34 \text{ min}$. $H_1$: "The sample of Route $B$ trip durations comes from a population with $\mu_0 < 34 \text{ min}$."
 
-The p-value is saying: "There is a $5.2%$ probability that one would observe our sample of Route $B$ trip durations while $H_0$ is true." In other words this p-value is telling us that there is a $5.2%$ probability of observing these trip durations if Route $B$ is the same as Route $A$. This doesn't address whether Route $B$ is shorter or longer, just whether it's different.
+The p-value is saying: "There is a $5.2$\% probability that one would observe our sample of Route $B$ trip durations while $H_0$ is true." In other words, this p-value is telling us that there is a $5.2$\% probability of observing these trip durations if Route $B$ is the same as Route $A$. This doesn't address whether Route $B$ is shorter or longer, just whether it's different.
 
-We chose a p-value threshold of $5%$, and our calculated p-value is *not* smaller than our threshold. This means that we *cannot* reject the null hypothesis.
+We chose a p-value threshold of $5$\%, and our calculated p-value is *not* smaller than our threshold. This means that we *cannot* reject the null hypothesis.
 
 There are two misconceptions we should talk about. First, the p-value is not the probability that the null hypothesis is true. It is the probability of observing data at least as extreme as what we did observe while assuming the null is true. Second, failing to reject $H_0$ is not the same as accepting $H_0$. Absence of evidence is not evidence of absence; our sample may be too small to detect a small effect.
 
