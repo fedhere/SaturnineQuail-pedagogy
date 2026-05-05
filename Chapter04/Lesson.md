@@ -64,7 +64,7 @@ where $\overline{X}$ is the sample mean, $n$ is the sample size and $\mu_0$ and 
 
 But is $Z$ is a number extracted from a standard normal distribution, from the previous lecture, we _know_ what the probability of getting a number _as large_ or _as small_ as $Z$ is because we know the PMF $P_\mathcal{N}$. 
 
-For example, if $Z$, extracted from a Gaussian distribution with mean $\mu=0$ and standard deviation $\sigma=1$, were $Z>1$, we would know that the probability of getting $Z>1$ is $P(Z>1) = (100-68.2)/2 = 15.9$ (please review last lecture's material if this is not clear)!
+For example, if $Z$, extracted from a Gaussian distribution with mean $\mu=0$ and standard deviation $\sigma=1$, were $Z>1$, we would know that the probability of getting $Z>1$ is $P(Z>1) = (100-68)/2 = 16$\% (please review last lecture's material if this is not clear)!
 
 
 ### Step 5: Calculate the Pivotal Quantity
