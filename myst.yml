@@ -17,10 +17,11 @@ project:
         - file: Chapter01/intro.md
         - file: Chapter01/Lesson1_Python101.ipynb
 
-    - title: "Chapter 2: Data Exploration"
+    - title: "Chapter 2: Data Exploration" 
+    #  Could rename this "Interacting with data"
       children:
         - file: Chapter02/intro.md
-        - file: Chapter02/Lecture2_DataExploration.ipynb
+        - file: Chapter02/Lesson2_DataExploration.ipynb
 
     - title: "Chapter 3: Statistics"
       children:
@@ -40,13 +41,15 @@ project:
         - file: Chapter05/Lesson5.1_LinearRegression.ipynb
         - file: Chapter05/Lesson5.2_MultipleLinearRegression.ipynb
 
-    - title: "Chapter 6: Logistic Regression"
+    # Midterm (To be actually given one week later)
+
+    - title: "Chapter 6: Binary Classification: Logistic Regression"
       children:
         - file: Chapter06/intro.md
         - file: Chapter06/Lesson6_LogisticRegression.ipynb
         - file: Chapter06/Exercises.ipynb
 
-    - title: "Chapter 7: Logistic Regression"
+    - title: "Chapter 7: Multi-Class Classification"
       children:
         - file: Chapter07/intro.md
         - file: Chapter07/Lesson7.1_Classification.ipynb
