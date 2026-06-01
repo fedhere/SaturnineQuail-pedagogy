@@ -18,7 +18,7 @@ Imagine you are trying to teach a computer to recognize handwritten digits. You 
 
 There must be a better way.
 
-There is. Instead of programming the rules explicitly, you can show the computer many examples of handwritten digits and let it discover the rules itself. This is **machine learning**.
+There is. Instead of programming the rules explicitly, you can show the computer many examples of handwritten digits and let it discover the rules itself. This is **supervised machine learning**.
 
 ## Part 1: What Is Data?
 
