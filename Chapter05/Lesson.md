@@ -43,7 +43,7 @@ Before we can build models, we must understand the types of data we work with. T
 
 ## Part 2: What Is Machine Learning?
 
-Arthur Samuel, a pioneer of artificial intelligence, defined machine learning in 1959 as "the field of study that gives computers the ability to learn without being explicitly programmed." Traditional programming requires you to provide explicit rules. Machine learning requires you to provide examples. The computer discovers the rules from the examples.
+Arthur Samuel, a pioneer of artificial intelligence, defined machine learning in 1959 as "the field of study that gives computers the ability to learn without being explicitly programmed." Traditional programming requires you to provide explicit rules. Supervised Machine learning requires you to provide examples. The computer discovers the rules from the examples.
 
 A **model** is a low-dimensional representation of a higher-dimensional dataset. Consider a scatter plot of 100 points that roughly follow a straight line. The raw data contains 100 x-values and 100 y-values—200 numbers. But the linear trend can be described by just two numbers: the slope and the intercept. That is a model. It is a simplification that captures the essential pattern while discarding the noise.
 
