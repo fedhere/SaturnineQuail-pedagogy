@@ -49,7 +49,7 @@ A **model** is a low-dimensional representation of a higher-dimensional dataset.
 
 **Parameters** are learned from the data. In the linear model $y = mx + b$, the slope $m$ and intercept $b$ are parameters. The learning algorithm adjusts them to fit the training data.
 
-**Hyperparameters** are set by the user before training begins. How many neighbors should a k-nearest neighbors model consider? How deep should a decision tree grow? These choices are hyperparameters. They are not learned from the data; you must choose them based on experience, intuition, or validation performance.
+**Hyperparameters** are set by the user before training begins. How many neighbors should a k-nearest neighbors model consider? How deep should a decision tree grow? These choices are hyperparameters. They are not learned from the data; you must choose them based on experience, intuition, or performance validation.
 
 ### Supervised vs. Unsupervised Learning
 
@@ -64,35 +64,48 @@ In **supervised learning**, some features (called targets or labels) are unobser
 - **Classification**: Predicting discrete categories (spam or not spam? cat or dog?)
 - **Regression**: Predicting continuous values (house price, temperature tomorrow)
 
+Beyond these two primoridal machine learning categories there are a few other ones: 
+
 **Semi-supervised learning** combines a small amount of labeled data with a large amount of unlabeled data. This is common when labeling is expensive but unlabeled data is abundant.
 
 **Active learning** allows the model to interactively query the user for labels on particularly informative data points. The model asks: "What is *this* one?" and you tell it.
+
+**Reinforcement learning** there is no single right or wrong answer that can be given as an example (label) but in a trial-and-error learning paradigm the model (agent) learns to make sequential decisions by maximizing a cumulative reward signal through interactions with an environment (think of a robot getting you a glass of water: there are many steps, glasses it can choose, many routes it can take to and back from the kitchen, so long as your thirst is quenched in a reasonable time they are all good choices, some are faster than others, some bring you too much or too little water).
+
 
 ## Part 3: Model Fitting and Objective Functions
 
 Fitting a model involves two steps.
 
-**Step 1:** Choose a mathematical form—a family of functions—that represents the expected relationship in the data. For a linear relationship, you might choose $y = mx + b$.
+**Step 1:** Choose a mathematical form—a family of functions—that represents the expected relationship in the data. For a linear relationship, you might choose $y = mx + b$. **FBB  plots are needed here**
 
 **Step 2:** Minimize an **objective function** (also called a loss function) that quantifies how poorly the model fits the data. The objective function takes the model's predictions, compares them to the true values, and returns a single number: the error.
 
 The **L1 objective** (Sum of Absolute Errors) is:
 
-$$\sum |y_i - (mx_i + b)|$$
+$$L_1=\sum_i |y_{i,\text{true}} - y_{i,\text{predicted})}|$$
+
+which, if your model is $y = mx + b$ becomes
+
+$$L_1 = \sum_i |y_i - (mx_i + b)|$$
 
 L1 is robust to outliers—a single extreme point does not dramatically change the optimal parameters. However, L1 can produce multiple optimal solutions, which can be confusing.
 
 The **L2 objective** (Sum of Squared Errors) is:
 
-$$\sum (y_i - (mx_i + b))^2$$
+$$L_2=\sum_i (y_{i,\text{true}} - y_{i,\text{predicted}})^2 $$
+
+or
+
+$$L_2 = \sum (y_i - (mx_i + b))^2$$
 
 L2 penalizes large errors more heavily than L1. If your prediction is off by 10, L2 counts that as 100—ten times worse than being off by 1 (which contributes 1). L2 has a unique analytic solution, which makes it fast and predictable.
 
-Other objective functions include **Huber loss** (which combines the robustness of L1 with the smoothness of L2), **cross-entropy loss** (used for classification), and **hinge loss** (used for support vector machines).
+Other objective functions include $\chi^2$ (pronounced kaɪ skweərd, which is an $L_2$ where the points are weighted by their uncertainties), **Huber loss** (which combines the robustness of L1 with the smoothness of L2), **cross-entropy loss** (used for classification), and **hinge loss** (used for support vector machines), **intersection over union** (used for object detection), and many more.
 
 ### Ordinary Least Squares (OLS) Regression
 
-For the linear model $y_i = \alpha + \beta x_i$, minimizing the L2 objective yields the Ordinary Least Squares solution. Remarkably, this problem has an **analytic solution**—you can compute the optimal parameters directly using formulas, without iterative searching.
+For the linear model $y_i = \alpha + \beta x_i$, minimizing the L2 objective yields the Ordinary Least Squares solution. Remarkably, for our linear model ($y = mx + b$), this problem has an **analytic solution**—you can compute the optimal parameters directly using formulas, without iterative searching.
 
 $$\hat{\beta} = \frac{\sum_{i=1}^{N} (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{N} (x_i - \bar{x})^2}$$
 
@@ -102,21 +115,7 @@ The slope $\hat{\beta}$ captures the expected change in $y$ for a one-unit chang
 
 I encourage you to derive these formulas yourself. Start with the L2 objective, take the derivative with respect to $\beta$ and $\alpha$, set both derivatives to zero, and solve. It is a satisfying exercise.
 
-## Part 4: Training, Validation, and Testing
-
-Here is a trap that catches many newcomers. You fit a model to your data. You evaluate its performance on the *same* data. The performance looks great—$R^2 = 0.95$! You celebrate. Then you try the model on new data, and it fails catastrophically.
-
-What happened? Your model memorized the training data, including its noise and quirks. It did not learn the underlying pattern. This is **overfitting**.
-
-To honestly assess generalization, you must split your dataset into three non-overlapping subsets before doing anything else.
-
-**The training set** (typically 60-80% of your data) is where the model learns its parameters. The model sees this data and adjusts its coefficients to minimize the objective function.
-
-**The validation set** (typically 10-20%) is used to tune hyperparameters and compare different models. You evaluate performance here repeatedly, but you do *not* train on it.
-
-**The testing set** (typically 10-20%) is used exactly once, at the very end of your project, to report final performance. You never look at the testing set until you are done making decisions.
-
-### Model Performance Metrics
+### Part 4: Model Performance Metrics
 
 For regression problems (predicting continuous values), common metrics include:
 
@@ -135,16 +134,38 @@ The $R^2$ value represents the proportion of variance in the target explained by
 For classification problems (predicting discrete categories), common metrics include:
 
 - **Accuracy**: The proportion of correct predictions
-- **Precision**: True positives divided by predicted positives. Of the points you labeled as positive, how many were actually positive?
-- **Recall**: True positives divided by actual positives. Of the actual positive points, how many did you catch?
+- **Precision**: True positives divided by predicted positives. Of the points you labeled as positive, how many were actually positive? (Here I referred to positives and negatives, which implies a binary classification. But this definition can be extended to a multiclass classification).
+- **Recall**: True positives divided by actual positives. Of the actual positive points, how many did you catch?  (As before, I referred to positives and negatives, which implies a binary classification. But this definition can be extended to a multiclass classification).
 - **F1 score**: The harmonic mean of precision and recall. This balances the two when you care about both.
+
+Note that sometimes these metrics look very similar, or may even be exactly the same as the objective function you used... that should make you suspicious. We will solve this riddle in the next section.
+
+## Training, Validation, and Testing
+
+Here is a trap that catches many newcomers. You fit a model to your data. You evaluate its performance on the *same* data. The performance looks great—$R^2 = 0.95$! You celebrate. Then you try the model on new data, and it fails catastrophically.
+
+What happened? Your model memorized the training data, including its noise and quirks. It did not learn the underlying pattern. This is **overfitting**.
+
+To honestly assess generalization, you must split your dataset into three non-overlapping subsets before doing anything else.
+
+**The training set** (typically 60-80% of your data) is where the model learns its parameters. The model sees this data and adjusts its coefficients to minimize the objective function.
+
+**The validation set** (typically 10-20%) is used to tune hyperparameters and compare different models. You evaluate performance here repeatedly, but you do *not* train on it.
+
+**The testing set** (typically 10-20%) is used exactly once, at the very end of your project, to report final performance. You never look at the testing set until you are done making decisions.
+
+
 
 ### Overfitting and Underfitting
 
 **Underfitting** occurs when your model is too simple to capture the underlying pattern. Imagine fitting a straight line to data that clearly follows a curve. Underfitting produces poor performance on both the training set and the test set.
 
+You can improve the model by for example changing the hyperparameters (going from a line, which is a polynomial of degree one, to a parabola, which is a polynomial of degree two, would be an example of this). 
+
 **Overfitting** occurs when your model is too complex relative to your amount of data. The model learns noise and idiosyncrasies specific to the training set. Overfitting produces excellent performance on the training set but poor performance on the test set.
 
 The train-validation-test split is your primary defense against overfitting. If validation performance lags noticeably behind training performance, you are overfitting. Your options include: simplifying the model, collecting more data, adding regularization, or reducing the number of features.
+
+While we learn the parameters from the data in the training set, we change the hyperparameters based on the performance of the testing set. We may, for example, choose a parabola, a second-degree polynomial, instead of a line based on the underfitting of the validation set, or go from a parabola to a line if we were overfitting. This is why splitting the data into two is not sufficient; we need a third _test_ set to make sure the hyperparameters were not tuned to specifically to the validation data and the model generalizes well.
 
 **NB:** The concepts in this lesson—particularly the NOIR taxonomy, the distinction between supervised and unsupervised learning, and the train-validation-test split—will appear throughout the rest of this course. Get comfortable with them now, and the later lessons will come much more easily.
